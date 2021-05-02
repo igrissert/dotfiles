@@ -1,0 +1,108 @@
+configuration {
+	font:                      		"Fira Code Bold Nerd Font Complete Mono 14";
+    disable-history:                false;
+    fullscreen:                     false;
+	hide-scrollbar: 				true;
+	sidebar-mode: 					false;
+}
+
+
+* {
+    background-color:               #0f1419;
+    text-color:                     #d6d7dc;
+}
+
+window {
+    transparency:                   "real";
+    location:                       center;
+    width:                       	500px;
+    x-offset:                       0px;
+    y-offset:                       0px;
+}
+
+prompt {
+    enabled: 						true;
+    padding:                        10px;
+	background-color: 				#0F1419;
+	text-color: 					#d6d7dc;
+    border:                  		2px 2px 2px 2px;
+    border-radius:                  0px;
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							" Volume:";
+	background-color: 				#0f1419;
+	text-color: 					#d6d7dc;
+    padding:                        12px 10px 0px 10px;
+}
+
+inputbar {
+	children: 						[ textbox-prompt-colon, prompt ];
+    spacing:                        0px;
+    background-color:               #00000000;
+    text-color:                     #0f1419;
+    expand:                         false;
+    margin:                         0px 0px 0px 0px;
+    padding:                        0px;
+    position:                       center;
+}
+
+listview {
+    columns:						3;
+    lines:							1;
+    spacing:                        15px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ inputbar, listview ];
+    spacing:                        15px;
+    margin:                         40px;
+}
+
+element {
+    background-color:               @background-light;
+    text-color:                     @foreground;
+    orientation:                    vertical;
+    border-radius:                  0px;
+}
+
+element-text {
+	font:							"feather 32";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0;
+    margin:                         25px 0px 65px 0px;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @off;
+    text-color:                     @background;
+    border-radius:                  0px;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               @on;
+    text-color:                     @background;
+}
+
+element selected {
+  background:                  #b7b9e1;
+  color:                        #2271b3;
+}
+
+element selected.urgent {
+    background-color:               @on;
+    text-color:                     @background;
+}
+
+element selected.active {
+    background-color:               @off;
+    color:                          @background;
+}

@@ -1,0 +1,57 @@
+window:
+    # Blank space added around the window in pixels
+    padding:
+        x: 0
+        y: 0
+
+    # Spread additional padding evenly around the terminal content
+    dynamic_padding: true
+
+    # Disable border and title bar
+    decowrations: none
+
+background_opacity: 1.0
+
+font:
+    normal:
+        family: BlexMono Nerd Font
+        style: Regular
+    bold:
+        family: BlexMono Nerd Font
+        style: Bold
+    italic:
+        family: BlexMono Nerd Font
+        style: Italic
+
+    size: 9
+
+colors:
+    primary:
+        background: '#1A1B26'
+        foreground: '#d5d7dc'
+    cursor:
+        text: '#f1f2f3' 
+        cursor: '#00364d'
+    vi_mode_cursor:
+        text: '#c8ccd0'
+        cursor: '#16191d'
+    selection:
+        text: '#b7b9e1'
+        background: '#2a4e5a'
+    search:
+        matches:
+            foreground: '#e3e6e8'
+            background: '#2c323a'
+        bar:
+            background: '#282c34'
+            foreground: '#00ffff'
+    normal:
+        black:   '#2e3038'
+        red:     '#ff3d33'
+        green:   '#77dd77'
+        yellow:  '#fafa1e'
+        blue:    '#2271b3'
+        magenta: '#F40ac2'
+        cyan:    '#00ffff'
+        white:   '#f4f4f4'
+

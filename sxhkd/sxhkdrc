@@ -1,0 +1,93 @@
+###################################################
+#												  #
+#												  #
+#				SXHKD HOTKEYS					  #
+#												  #
+#												  #
+###################################################
+
+# --------------------> Launch APPS <--------------------
+# Terminal emulator
+super + Return
+	alacritty
+
+# --------------------> Launch Menu's <--------------------
+# program launcher
+super + d
+  rofi -no-lazy-grab -show drun -theme ~/.config/rofi/style/applauncher.rasi
+
+# PowerMenu
+super + x
+	sh ~/.config/rofi/scripts/powermenu.sh
+
+# MOC Control
+super + m
+  sh ~/.config/rofi/scripts/mocp.sh
+
+# Volume Control
+super + v
+  sh ~/.config/rofi/scripts/volume.sh
+
+# Backlight control
+super + b
+  sh ~/.config/rofi/scripts/luxBackLight.sh
+
+# Battery view
+super + c
+  sh ~/.config/rofi/scripts/battery.sh
+
+# Lock screen
+super + l
+	betterlockscreen -l ~/.config/backgrounds/bg-02 -b 1
+
+# --------------------> Reload Keymap <--------------------
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# --------------------> BSPWM <--------------------
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# --------------------> State node <--------------------
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + g
+  bspc node -s biggest.window
+# --------------------> Focus/Swap <--------------------
+# focus the node in the given direction
+super + {Left,Down,Up,Right}
+	bspc node --{focus} {west,south,north,east}
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# --------------------> Preselect <--------------------
+# preselect the direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# --------------------> Move/Resize <--------------------
+#Resize node
+super + shift + {Left,Down,Up,Right}
+	sh ~/.config/scripts/bspwm_resize {west,south,north,east}
+
+# move a floating window
+super + alt + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

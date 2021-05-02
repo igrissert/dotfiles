@@ -1,0 +1,21 @@
+
+* {
+    background-color:       #0F1419;
+    text-color:             #D5D7DC;
+	font:				 	"Fira Code Bold Nerd Font Complete Mono 12";
+}
+
+window {
+    width:      			225px;
+    padding:    			25px;
+    border:					0px;
+    border-radius:          0px;
+    border-color:           @accent;
+    location:               center;
+    y-offset:               -20px;
+}
+
+entry {
+    expand: 				true;
+    text-color:				@accent;
+}
