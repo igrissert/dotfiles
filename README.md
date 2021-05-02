@@ -1,1 +1,3 @@
-<h1> MY PERSONAL CONFIG ON BSPWM </h1>
+<h1> Mi configuracion personal en BSPWM </h1>
+
+<p align="center"> En este repositorio contiene mi configuracion personal usada en BSPWM </p>
