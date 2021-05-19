@@ -1,0 +1,312 @@
+
+; --------------------------------------
+; |                                    |
+; |              Main Bar              |
+; |                                    |
+; --------------------------------------
+
+
+[bar/main]
+offset-y = 5
+offset-x = 7
+height = 30
+opacity = 0
+fixed-center = true
+wm-restack = bspwm
+override-redirect = true
+enable-ipc = true
+
+underline-size = 8 
+overline-size = 8
+background = #191A1E
+
+font-0 = BlexMono Nerd Font:size=11:antialias=true;3
+
+; --------------------------------------
+; |                                    |
+; |              Bar                   |
+; |                                    |
+; --------------------------------------
+
+[bar/center]
+inherit = bar/main
+height = 35
+width = 85%
+fixed-center = true
+offset-x = 150
+offset-y = 5
+radius = 10
+wm-restack = bspwm
+modules-center = bspwm
+modules-right = cornerLeftWLan network-wlan cornerRightWlan sep cornerLeftLan network-lan cornerRightLan sep cornerLeftBattery battery cornerRightBattery sep cornerLeftBack backlight cornerRightBack sep cornerLeftAudio audio cornerRightAudio sep
+modules-left = sep cornerLeftDate date-time cornerRightDate
+ 
+; --------------------------------------
+; |                                    |
+; |              MODULES               |
+; |                                    |
+; --------------------------------------
+
+[module/battery]
+type = internal/battery
+full-at = 95
+battery = BAT0
+adapter = ADP0
+poll-interval = 1
+
+format-charging = <animation-charging> <label-charging> 
+format-charging-background = #85a3e0
+format-charging-underline = #191A1E
+format-charging-overline = #191A1E
+format-charging-foreground = #001a1a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-background = #85a3e0
+format-discharging-underline = #191A1E
+format-discharging-overline = #191A1E
+format-discharging-foreground = #001a1a
+
+format-full = <ramp-capacity> <label-full>
+format-full-background = #85a3e0
+format-full-underline = #191A1E
+format-full-overline = #191A1E
+format-full-foreground = #001a1a
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-padding-right = 1
+
+animation-charging-0 =  
+animation-charging-1 =  
+animation-charging-2 =  
+animation-charging-3 =  
+animation-charging-4 =  
+animation-charging-framerate = 300 
+animation-charging-padding-right = 1
+
+[module/date-time]
+type = internal/date
+interval = 1
+
+time = %H:%M
+date = %A, %d %B %Y
+
+format = <label>
+format-background = #6666ff
+format-underline = #191A1E
+format-overline = #191A1E
+format-foreground = #001a1a
+
+label = %date% | %time%
+
+[module/backlight]
+type = internal/backlight
+card = amdgpu_bl1
+enable-scroll = true
+
+format = <label>
+format-background = #ffff66
+format-underline = #191A1E
+format-overline = #191A1E
+format-foreground = #001a1a
+
+label =  %percentage%%
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = false
+inline-mode = false
+enable-click = false
+enable-scroll = false
+reverse-scroll = false
+fuzy-match = true
+
+label-focused = ﰊ
+label-focused-padding = 1
+label-focused-foreground = #6666ff
+
+label-occupied = 
+label-occupied-padding = 1
+label-occupied-foreground = #b3ff66
+
+label-urgent = 
+label-urgent-padding = 1
+label-urgent-foreground = #ff6666
+
+label-empty = 
+label-empty-padding = 1
+
+[module/network-lan]
+type = internal/network
+interface = eno1
+interval = 1
+
+format-connected = <label-connected>
+format-connected-background = #ffa366
+format-connected-underline = #191A1E
+format-connected-overline = #191A1E
+format-connected-foreground = #001a1a
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = #ffa366
+format-disconnected-underline = #191A1E
+format-disconnected-overline = #191A1E
+format-disconnected-foreground = #001a1a
+
+label-connected = 歷 CONNECTED
+
+label-disconnected = 轢 NC  
+
+[module/network-wlan]
+type = internal/network
+interface = wlp4s0
+interval = 1
+
+format-connected = <label-connected>
+format-connected-background = #ff6666
+format-connected-underline = #191A1E
+format-connected-overline = #191A1E
+format-connected-foreground = #001a1a
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = #ff6666
+format-disconnected-underline = #191A1E
+format-disconnected-overline = #191A1E
+format-disconnected-foreground = #001a1a
+
+label-connected =  %essid%
+
+label-disconnected =  NC
+
+[module/audio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_06_00.6.analog-stereo
+use-ui-max = true
+internal = 5
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = #8cd98c
+format-volume-underline = #191A1E
+format-volume-overline = #191A1E
+format-volume-foreground = #001a1a
+
+format-muted = <label-muted>
+format-muted-background = #8cd98c
+format-muted-underline = #191A1E
+format-muted-overline = #191A1E
+format-muted-foreground = #001a1a
+
+label-volume = %percentage%%
+
+label-muted = ﱝ
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+[module/cornerLeftAudio]
+type = custom/text
+content-font = 4
+content = ""
+content-foreground = #8cd98c
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerRightAudio]
+type = custom/text
+content-font = 4
+content =""
+content-foreground = #8cd98c
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerLeftBack]
+type = custom/text
+content-font = 4
+content = ""
+content-foreground = #ffff66
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerRightBack]
+type = custom/text
+content-font = 4
+content =""
+content-foreground = #ffff66
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerLeftBattery]
+type = custom/text
+content-font = 4
+content = ""
+content-foreground = #85a3e0
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerRightBattery]
+type = custom/text
+content-font = 4
+content =""
+content-foreground = #85a3e0
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerLeftLan]
+type = custom/text
+content-font = 4
+content = ""
+content-foreground = #ffa366
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerRightLan]
+type = custom/text
+content-font = 4
+content =""
+content-foreground = #ffa366
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerLeftWLan]
+type = custom/text
+content-font = 4
+content = ""
+content-foreground = #ff6666
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerRightWlan]
+type = custom/text
+content-font = 4
+content =""
+content-foreground = #ff6666
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerLeftDate]
+type = custom/text
+content-font = 4
+content = ""
+content-foreground = #6666ff
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/cornerRightDate]
+type = custom/text
+content-font = 4
+content =""
+content-foreground = #6666ff
+content-underline = #191A1E
+content-overline = #191A1E
+
+[module/sep]
+type = custom/text
+content = " "
